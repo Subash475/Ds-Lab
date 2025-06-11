@@ -1,47 +1,47 @@
+// Stack ADT using Arrayy
 #include <stdio.h>
-#define SIZE 50
+#include <stdlib.h>
+#define MAX 100
 
-int stack [SIZE];
+int stack[MAX];
 int top = -1;
 
-void push (int value) {
-    if (top == SIZE - 1) {
-        printf("stack overflow\n");
-    
-    }else {
-        top++;
-        stack[top] = value;
-        printf("%d pushed to stack\n",value);
-        
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack is overflow\n");
+    } else {
+        stack[++top] = value;
     }
 }
- void pop() {
-     if (top == -1){
-         printf("stack underflow\n");
-         
-     }else{
-         printf ("%d popped from stack\n",stack[top]);
-         top --;
-     }
- }
- 
- void display(){
-     if (top == -1){
-         printf("Stack is empty\n");
-        } else {
-            printf ("stack element:\n");
-            for (int i = top; i >= 0; i--) {
-            printf("%d ", stack[i]);
+
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+        return -1;
+    } else {
+        return stack[top--];
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements (top to bottom): ");
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]); 
         }
         printf("\n");
     }
 }
+
 int main() {
+    printf("Stack Operations:\n");
     push(10);
     push(20);
     push(30);
     display();
-    pop();
+    printf("Popped: %d\n", pop());
     display();
     return 0;
 }
